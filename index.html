@@ -7,28 +7,50 @@
     var xhttp;
     
     function loadDoc(){
-    var word = "request.php?q=" + document.getElementById("search").value;  
+    var word = document.getElementById("search").value;  
      xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("div1").innerHTML = this.responseText;
     }
   };
-    xhttp.open("GET", "https://info2180-lab6-camillebeckford.c9users.io/Lab6/request.php?q=definition", true);
+    xhttp.open("GET", "https://info2180-lab6-camillebeckford.c9users.io/Lab6/request.php?q="+word, true);
     xhttp.send();
      
    }
 
 </script>
+<style>
+  #head{
+    padding: 10px;
+    clear: left;
+    text-align: center;
+  }
+form {
+  background:#eee;
+  float:right;
+   margin-left: 170px;
+    border-left: 1px solid gray;
+    padding-right: 20em;
+     padding-left: 20em;
+}  
+.div1{
+    float: left;
+    width: 100px;
+    height: 300px;
+}
+</style>
 
+<div style="background-color:powderblue; font-size:200%;" id="head" > <h1>Web Dictionary </h1></div>
 <form onsubmit="return validateForm()" method="post">
 Word:<br>
   <input type="text" name="search" id="search">
   <br>
   <br><br>
-  <input type="button" id="button"  onclick=loadDoc()>
+  <input type="button" id="button" value="Search" onclick=loadDoc()> 
 </form>
-<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+<div id="div1" style="background-color:powderblue;" ><h2>Search Results</h2></div>
+
 
 
 </body>
